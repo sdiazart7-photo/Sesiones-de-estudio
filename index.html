@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotografía - Sesiones 2025</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos personalizados para fuentes y colores */
+        html {
+            scroll-behavior: smooth;
+        }
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Definiendo los colores personalizados para Tailwind */
+        .bg-brand-dark { background-color: #17140f; }
+        .bg-brand-accent { background-color: #f2d08f; }
+        .bg-brand-offwhite { background-color: #f1f1f1; }
+
+        .text-brand-dark { color: #17140f; }
+        .text-brand-accent { color: #f2d08f; }
+        .text-brand-offwhite { color: #f1f1f1; }
+
+        .border-brand-accent { border-color: #f2d08f; }
+        .border-brand-dark { border-color: #17140f; }
+        
+        /* Ocultar la barra de scroll del carrusel */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Estilos para el acordeón */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary:after {
+            content: '+';
+            float: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        details[open] summary:after {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-brand-offwhite">
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-brand-offwhite pt-20 md:pt-28">
+            <div class="container mx-auto px-6 pb-20 md:pb-32 grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-left">
+                    <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4 text-brand-dark">Tu esencia, tu brillo, tu foto</h1>
+                    <p class="text-lg md:text-xl text-brand-dark/70 mb-8">Acá vienes a verte como nunca, no como siempre.</p>
+                    <a href="#contacto" class="bg-brand-accent text-brand-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition-transform transform hover:scale-105 inline-block">QUIERO MI SESIÓN</a>
+                </div>
+                <!-- Image Placeholder -->
+                <div class="w-full flex items-center justify-center">
+                     <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172693/fotos-ana-3_b6ewnc.jpg" alt="Mujer posando con vestido rojo y guantes negros" class="object-contain max-h-[500px] w-full max-w-md" onerror="this.onerror=null;this.src='https://placehold.co/600x800/cccccc/17140f?text=Foto+Principal';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Paquetes Section -->
+        <section id="paquetes" class="py-20 bg-brand-dark">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12 text-brand-accent">Paquetes 2025</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                    <!-- Paquete Icónica -->
+                    <div class="bg-brand-offwhite rounded-xl p-6 shadow-2xl flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2 text-brand-dark">Paquete Icónica</h3>
+                        <p class="text-brand-dark/70 mb-4 text-sm">Para quienes prefieren el encanto sobre el escándalo.</p>
+                        <p class="text-3xl font-black mb-4 text-brand-dark">$2,000 <span class="text-base font-normal text-brand-dark/70">MXN</span></p>
+                        <ul class="space-y-3 text-base mb-6 flex-grow text-brand-dark">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>40 min de sesión en estudio</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>10 fotos editadas</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>1 outfit y 1 fondo</li>
+                        </ul>
+                        <div class="text-center mt-4 mb-6 border-t border-brand-dark/20 pt-4">
+                            <h4 class="font-bold text-brand-dark text-sm">Extras Disponibles</h4>
+                            <p class="text-xs text-brand-dark/70">Ramo de flores o pastel (a cotizar).</p>
+                        </div>
+                        <a href="#contacto" class="w-full text-center bg-brand-accent text-brand-dark font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors">QUIERO MI SESIÓN</a>
+                    </div>
+                    
+                    <!-- Paquete Reina -->
+                    <div class="bg-brand-offwhite rounded-xl p-6 shadow-2xl flex flex-col relative">
+                        <span class="absolute top-0 right-6 -mt-3 bg-brand-accent text-brand-dark text-xs font-bold px-3 py-1 rounded-full">Más Popular</span>
+                        <h3 class="text-2xl font-bold mb-2 text-brand-dark">Paquete Reina</h3>
+                        <p class="text-brand-dark/70 mb-4 text-sm">Este es tu escenario. Y tú, la estrella.</p>
+                        <p class="text-3xl font-black mb-4 text-brand-dark">$2,500 <span class="text-base font-normal text-brand-dark/70">MXN</span></p>
+                        <ul class="space-y-3 text-base mb-6 flex-grow text-brand-dark">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>1 hora de sesión en estudio</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>16 fotos editadas</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>2 outfits y 2 fondos</li>
+                        </ul>
+                         <div class="text-center mt-4 mb-6 border-t border-brand-dark/20 pt-4">
+                            <h4 class="font-bold text-brand-dark text-sm">Extras Disponibles</h4>
+                            <p class="text-xs text-brand-dark/70">Ramo de flores o pastel (a cotizar).</p>
+                        </div>
+                        <a href="#contacto" class="w-full text-center bg-brand-accent text-brand-dark font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors">QUIERO MI SESIÓN</a>
+                    </div>
+                </div>
+                <!-- Bono Exclusivo -->
+                <div class="bg-brand-accent text-brand-dark p-4 rounded-lg text-center mt-12 max-w-2xl mx-auto">
+                    <h3 class="font-bold text-xl mb-1 text-brand-dark">¡BONO EXCLUSIVO!</h3>
+                    <p class="text-base">Reserva en las próximas 48 horas y recibe <span class="font-bold">5 fotos extras editadas</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="bg-white relative">
+            <div id="gallery-container" class="relative w-full overflow-hidden">
+                <div id="gallery-carousel" class="flex">
+                    <!-- Carousel Items -->
+                    <!-- CAMBIO: Se cambió `p-1` por `px-px` para eliminar el espacio vertical y reducir el horizontal -->
+                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172693/fotos-ana-3_b6ewnc.jpg" alt="Retrato de mujer 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-11_trfyua.jpg" alt="Retrato de mujer 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-16_jgtk4h.jpg" alt="Retrato de mujer 3" class="w-full h-full object-cover">
+                    </div>
+                     <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-14_fmlfzw.jpg" alt="Retrato de mujer 4" class="w-full h-full object-cover">
+                    </div>
+                     <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172763/fotos-karla-15_yobqzz.jpg" alt="Retrato de mujer 5" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172764/fotos-karla-4_kkkdop.jpg" alt="Retrato de mujer 6" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172764/fotos-karla-7_clcqc8.jpg" alt="Retrato de mujer 7" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
+                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172765/fotos-karla-11_bxxcca.jpg" alt="Retrato de mujer 8" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <!-- Botones de Navegación -->
+            <button id="prev-btn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-brand-dark/50 text-white p-3 rounded-full hover:bg-brand-dark transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button id="next-btn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-brand-dark/50 text-white p-3 rounded-full hover:bg-brand-dark transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </section>
+
+        <!-- Info Section -->
+        <section id="info" class="py-20 bg-brand-offwhite">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-brand-dark">Información importante</h2>
+                <div class="space-y-4">
+                    <details class="bg-white p-6 rounded-lg shadow-lg group">
+                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Sobre la sesión</summary>
+                        <div class="mt-4 text-brand-dark/80">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Puedes traer accesorios (globos, pastel, confeti, etc.).</li>
+                                <li>Se permite un acompañante.</li>
+                                <li>Tolerancia de 10 minutos; después, se descuenta del tiempo de sesión.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-lg group">
+                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Pagos y reservas</summary>
+                         <div class="mt-4 text-brand-dark/80">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Se requiere un anticipo del 30% para apartar fecha (no reembolsable).</li>
+                                <li>El 70% restante se cubre al finalizar la sesión.</li>
+                                <li>No se entregan fotos sin el pago completo.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-lg group">
+                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Entregas y edición</summary>
+                         <div class="mt-4 text-brand-dark/80">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Entrega de galería en 48 horas.</li>
+                                <li>Foto extra para edición: $120 MXN.</li>
+                                <li>Una sola oportunidad para solicitar cambios en el material.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-lg group">
+                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Cambios y validez</summary>
+                         <div class="mt-4 text-brand-dark/80">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Puedes reagendar con 72 hrs de anticipación.</li>
+                                <li>Cambios con menos tiempo se consideran sesión perdida.</li>
+                                <li>Esta cotización es válida por 5 días.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact/CTA Section -->
+        <section id="contacto" class="py-20 text-center bg-brand-dark">
+             <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-4 text-brand-accent">¿Lista para brillar?</h2>
+                <p class="text-lg text-brand-offwhite mb-4 max-w-2xl mx-auto">Asegura tu lugar.</p>
+                <p class="text-brand-accent font-bold text-xl mb-8 tracking-wider">¡Solo 8 espacios disponibles por mes!</p>
+                
+                <div class="bg-white rounded-lg p-2 md:p-4 max-w-4xl mx-auto">
+                    <!-- Cal inline embed code begins -->
+                    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-sesion-de-fotos"></div>
+                    <script type="text/javascript">
+                      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                      Cal("init", "sesion-de-fotos", {origin:"https://app.cal.com"});
+
+                      Cal.ns["sesion-de-fotos"]("inline", {
+                        elementOrSelector:"#my-cal-inline-sesion-de-fotos",
+                        config: {"layout":"month_view"},
+                        calLink: "sauldiazph/sesion-de-fotos",
+                      });
+
+                      Cal.ns["sesion-de-fotos"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+                      </script>
+                      <!-- Cal inline embed code ends -->
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('gallery-carousel');
+            const nextBtn = document.getElementById('next-btn');
+            const prevBtn = document.getElementById('prev-btn');
+
+            let currentIndex = 0;
+            let isTransitioning = false;
+            let originalItemCount = carousel.children.length;
+            let autoScrollInterval;
+
+            const setupCarousel = () => {
+                // Detener el desplazamiento automático y limpiar clones antiguos
+                if (autoScrollInterval) clearInterval(autoScrollInterval);
+                const clones = carousel.querySelectorAll('.clone');
+                clones.forEach(clone => clone.remove());
+
+                // Determinar cuántos elementos son visibles
+                const visibleItems = window.innerWidth >= 768 ? 3 : 1;
+                
+                // Clonar los elementos necesarios al final para un bucle infinito
+                for (let i = 0; i < visibleItems; i++) {
+                    const item = carousel.children[i].cloneNode(true);
+                    item.classList.add('clone');
+                    carousel.appendChild(item);
+                }
+                
+                // Mover al inicio sin animación
+                currentIndex = 0;
+                carousel.style.transition = 'none';
+                updateCarouselPosition();
+                
+                // Reiniciar el desplazamiento automático
+                startAutoScroll();
+            };
+
+            const updateCarouselPosition = () => {
+                // offsetWidth incluye padding y borde, lo que es perfecto para nuestro cálculo
+                const itemWidth = carousel.children[0].offsetWidth;
+                const offset = -currentIndex * itemWidth;
+                carousel.style.transform = `translateX(${offset}px)`;
+            };
+
+            const moveCarousel = (direction) => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
+                currentIndex += direction;
+                carousel.style.transition = 'transform 0.5s ease-in-out';
+                updateCarouselPosition();
+
+                // Usar un listener de evento para manejar el final de la transición
+                carousel.addEventListener('transitionend', () => {
+                    isTransitioning = false;
+                    // Si hemos llegado a los clones, saltar al inicio
+                    if (currentIndex >= originalItemCount) {
+                        carousel.style.transition = 'none';
+                        currentIndex = 0;
+                        updateCarouselPosition();
+                    }
+                    // Si vamos hacia atrás y pasamos el inicio
+                    if (currentIndex < 0) {
+                        carousel.style.transition = 'none';
+                        currentIndex = originalItemCount - 1;
+                        updateCarouselPosition();
+                    }
+                }, { once: true });
+            };
+
+            const startAutoScroll = () => {
+                // Desplazar automáticamente cada 4 segundos
+                autoScrollInterval = setInterval(() => {
+                    moveCarousel(1);
+                }, 4000);
+            };
+
+            // Event listeners para los botones
+            nextBtn.addEventListener('click', () => {
+                clearInterval(autoScrollInterval);
+                moveCarousel(1);
+                startAutoScroll();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                clearInterval(autoScrollInterval);
+                moveCarousel(-1);
+                startAutoScroll();
+            });
+
+            // Configuración inicial
+            setupCarousel();
+            
+            // Reconfigurar el carrusel si cambia el tamaño de la ventana
+            window.addEventListener('resize', setupCarousel);
+        });
+    </script>
+
+</body>
+</html>
