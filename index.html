@@ -1,412 +1,671 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotografía - Sesiones 2025</title>
-    
-    <!-- Tailwind CSS -->
+    <title>Prime Era Sessions | sauldiaz.art</title>
+    <meta name="description" content="Sesiones diseñadas para presentar la versión de ti que empieza ahora.">
+
+    <!-- Tailwind CSS Config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'prime-dark': '#0d0c0a',
+                        'prime-gold': '#f2d08f',
+                        'prime-gold-dark': '#e6b86a',
+                    },
+                    fontFamily: {
+                        'body': ['Poppins', 'sans-serif'],
+                        'display': ['Geomanist', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(to right, #f2d08f, #e6b86a)',
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- Geomanist Alternative (CDN) -->
+    <link href="https://fonts.cdnfonts.com/css/geomanist" rel="stylesheet">
+                
     <style>
-        /* Estilos personalizados para fuentes y colores */
-        html {
-            scroll-behavior: smooth;
-        }
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-        }
-        /* Definiendo los colores personalizados para Tailwind */
-        .bg-brand-dark { background-color: #17140f; }
-        .bg-brand-accent { background-color: #f2d08f; }
-        .bg-brand-offwhite { background-color: #f1f1f1; }
-
-        .text-brand-dark { color: #17140f; }
-        .text-brand-accent { color: #f2d08f; }
-        .text-brand-offwhite { color: #f1f1f1; }
-
-        .border-brand-accent { border-color: #f2d08f; }
-        .border-brand-dark { border-color: #17140f; }
-        
-        /* Ocultar la barra de scroll del carrusel */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+        /* Base Typography */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 300;
+            letter-spacing: 0.02em;
         }
         
-        /* Estilos para el acordeón */
-        details > summary {
-            list-style: none;
+        h1, h2, h3, h4, h5, h6, .font-prime { 
+            font-family: 'Geomanist', sans-serif; 
+            font-weight: 700;
         }
-        details > summary::-webkit-details-marker {
-            display: none;
+
+        /* Utilities */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #f2d08f, #e6b86a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        details summary:after {
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Custom Details/Summary */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        /* Icono por defecto (para FAQ) */
+        details:not(.no-icon) summary::after {
             content: '+';
+            font-weight: 300;
             float: right;
-            font-size: 1.5em;
-            font-weight: bold;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            font-size: 1.5rem;
+            line-height: 1;
         }
-        details[open] summary:after {
-            transform: rotate(45deg);
+        
+        /* Ajuste de colores para el icono + según el fondo */
+        details.dark-theme summary::after { color: #f2d08f; }
+
+        details[open] summary::after { transform: rotate(45deg); }
+        details[open] summary ~ * { animation: fadeIn 0.5s ease-in-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Transición de Imagen Mejorada */
+        .crossfade-img {
+            transition: opacity 3s ease-in-out, transform 1.5s ease-out;
         }
     </style>
 </head>
-<body class="bg-brand-offwhite">
+<body class="bg-prime-dark text-white overflow-x-hidden antialiased selection:bg-prime-gold selection:text-black">
 
-    <main>
-        <!-- Hero Section -->
-        <section class="bg-brand-offwhite pt-20 md:pt-28">
-            <div class="container mx-auto px-6 pb-20 md:pb-32 grid md:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
-                <div class="text-left">
-                    <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4 text-brand-dark">Tu esencia, tu brillo, tu foto</h1>
-                    <p class="text-lg md:text-xl text-brand-dark/70 mb-8">Acá vienes a verte como nunca, no como siempre.</p>
-                    <a href="#contacto" class="bg-brand-accent text-brand-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition-transform transform hover:scale-105 inline-block">QUIERO MI SESIÓN</a>
-                </div>
-                <!-- Image Placeholder -->
-                <div class="w-full flex items-center justify-center">
-                     <!-- CAMBIO: Se actualizó la imagen principal -->
-                     <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717927/sart-insta-3_yajwcz.jpg" alt="Modelo posando para sesión de fotos" class="object-contain max-h-[500px] w-full max-w-md" onerror="this.onerror=null;this.src='https://placehold.co/600x800/cccccc/17140f?text=Foto+Principal';">
-                </div>
+    <!-- NAVEGACIÓN -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="px-6 py-6 lg:px-16 flex justify-between items-center">
+            <div class="text-sm md:text-base font-bold uppercase tracking-[0.2em] font-prime text-white mix-blend-difference z-50">
+                sauldiaz.art
             </div>
-        </section>
+            
+            <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="group relative overflow-hidden px-6 py-2">
+                <span class="relative z-10 text-[10px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 group-hover:text-black">Reservar</span>
+                <div class="absolute inset-0 bg-prime-gold transform translate-y-full transition-transform duration-300 group-hover:translate-y-0"></div>
+                <div class="absolute bottom-0 left-0 w-full h-[1px] bg-prime-gold group-hover:hidden"></div>
+            </a>
+        </div>
+        <!-- Fondo blur dinámico al hacer scroll (manejado por JS) -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-500 -z-10" id="navbar-bg"></div>
+    </nav>
 
-        <!-- Gallery Section -->
-        <section class="bg-white relative">
-            <div id="gallery-container" class="relative w-full max-w-7xl mx-auto overflow-hidden">
-                <div id="gallery-carousel" class="flex">
-                    <!-- CAMBIO: Se reorganizaron las imágenes para mayor variedad -->
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172693/fotos-ana-3_b6ewnc.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717928/sart-insta-31_vzaln8.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172764/fotos-karla-4_kkkdop.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717928/sart-insta-16_ooxshe.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-11_trfyua.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717882/sart-11_idfxqq.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172763/fotos-karla-15_yobqzz.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717927/sart-insta-1_loruf6.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-16_jgtk4h.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-22_c3encl.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172764/fotos-karla-7_clcqc8.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717854/sart-insta-15_an1j8l.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-6_otgt9f.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-14_fmlfzw.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717854/sart-insta-23_kenasc.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-19_yrgs3r.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172765/fotos-karla-11_bxxcca.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717927/sart-insta-3_yajwcz.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-24_tbf42l.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717883/sart-4_qvh23x.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-18_y8fkso.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-shrink-0 basis-full md:basis-1/3 h-[60vh] px-px">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717854/sart-insta-3_ylmudm.jpg" alt="Retrato de mujer" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-            <!-- Botones de Navegación -->
-            <button id="prev-btn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-brand-dark/50 text-white p-3 rounded-full hover:bg-brand-dark transition-colors z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <button id="next-btn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-brand-dark/50 text-white p-3 rounded-full hover:bg-brand-dark transition-colors z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-        </section>
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-24_tbf42l.jpg" 
+                 alt="Woman in Prime Era" 
+                 class="w-full h-full object-cover object-[center_15%] opacity-50 scale-105 animate-[pulse_10s_ease-in-out_infinite] grayscale-[20%]">
+            <div class="absolute inset-0 bg-gradient-to-t from-prime-dark via-prime-dark/20 to-black/60"></div>
+        </div>
 
-        <!-- Paquetes Section -->
-        <section id="paquetes" class="py-20 bg-brand-dark">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12 text-brand-accent">Paquetes 2025</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                    <!-- Paquete Icónica -->
-                    <div class="bg-brand-offwhite rounded-xl p-6 shadow-2xl flex flex-col">
-                        <h3 class="text-2xl font-bold mb-2 text-brand-dark">Paquete Icónica</h3>
-                        <p class="text-brand-dark/70 mb-4 text-sm">Para quienes prefieren el encanto sobre el escándalo.</p>
-                        <p class="text-3xl font-black mb-4 text-brand-dark">$2,000 <span class="text-base font-normal text-brand-dark/70">MXN</span></p>
-                        <ul class="space-y-3 text-base mb-6 flex-grow text-brand-dark">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>40 min de sesión en estudio</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>10 fotos editadas</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>1 outfit y 1 fondo</li>
-                        </ul>
-                        <div class="text-center mt-4 mb-6 border-t border-brand-dark/20 pt-4">
-                            <h4 class="font-bold text-brand-dark text-sm">Extras Disponibles</h4>
-                            <p class="text-xs text-brand-dark/70">Ramo de flores o pastel (a cotizar).</p>
-                        </div>
-                        <a href="#contacto" class="w-full text-center bg-brand-accent text-brand-dark font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors">QUIERO MI SESIÓN</a>
-                    </div>
-                    
-                    <!-- Paquete Reina -->
-                    <div class="bg-brand-offwhite rounded-xl p-6 shadow-2xl flex flex-col relative">
-                        <span class="absolute top-0 right-6 -mt-3 bg-brand-accent text-brand-dark text-xs font-bold px-3 py-1 rounded-full">Más Popular</span>
-                        <h3 class="text-2xl font-bold mb-2 text-brand-dark">Paquete Reina</h3>
-                        <p class="text-brand-dark/70 mb-4 text-sm">Este es tu escenario. Y tú, la estrella.</p>
-                        <p class="text-3xl font-black mb-4 text-brand-dark">$2,500 <span class="text-base font-normal text-brand-dark/70">MXN</span></p>
-                        <ul class="space-y-3 text-base mb-6 flex-grow text-brand-dark">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>1 hora de sesión en estudio</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>16 fotos editadas</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-brand-dark mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>2 outfits y 2 fondos</li>
-                        </ul>
-                         <div class="text-center mt-4 mb-6 border-t border-brand-dark/20 pt-4">
-                            <h4 class="font-bold text-brand-dark text-sm">Extras Disponibles</h4>
-                            <p class="text-xs text-brand-dark/70">Ramo de flores o pastel (a cotizar).</p>
-                        </div>
-                        <a href="#contacto" class="w-full text-center bg-brand-accent text-brand-dark font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors">QUIERO MI SESIÓN</a>
-                    </div>
-                </div>
-                <!-- Bono Exclusivo -->
-                <div class="bg-brand-accent text-brand-dark p-4 rounded-lg text-center mt-12 max-w-2xl mx-auto">
-                    <h3 class="font-bold text-xl mb-1 text-brand-dark">¡BONO EXCLUSIVO!</h3>
-                    <p class="text-base">Reserva en las próximas 48 horas y recibe <span class="font-bold">5 fotos extras editadas</span>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Info Section -->
-        <section id="info" class="py-20 bg-brand-offwhite">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <h2 class="text-4xl font-bold text-center mb-12 text-brand-dark">Información importante</h2>
-                <div class="space-y-4">
-                    <details class="bg-white p-6 rounded-lg shadow-lg group">
-                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Sobre la sesión</summary>
-                        <div class="mt-4 text-brand-dark/80">
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Puedes traer accesorios (globos, pastel, confeti, etc.).</li>
-                                <li>Se permite un acompañante.</li>
-                                <li>Tolerancia de 10 minutos; después, se descuenta del tiempo de sesión.</li>
-                            </ul>
-                        </div>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-lg group">
-                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Pagos y reservas</summary>
-                         <div class="mt-4 text-brand-dark/80">
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Se requiere un anticipo del 30% para apartar fecha (no reembolsable).</li>
-                                <li>El 70% restante se cubre al finalizar la sesión.</li>
-                                <li>No se entregan fotos sin el pago completo.</li>
-                            </ul>
-                        </div>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-lg group">
-                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Entregas y edición</summary>
-                         <div class="mt-4 text-brand-dark/80">
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Entrega de galería en 48 horas.</li>
-                                <li>Foto extra para edición: $120 MXN.</li>
-                                <li>Una sola oportunidad para solicitar cambios en el material.</li>
-                            </ul>
-                        </div>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-lg group">
-                        <summary class="font-bold text-xl text-brand-dark cursor-pointer">Cambios y validez</summary>
-                         <div class="mt-4 text-brand-dark/80">
-                            <ul class="list-disc list-inside space-y-2">
-                                <li>Puedes reagendar con 72 hrs de anticipación.</li>
-                                <li>Cambios con menos tiempo se consideran sesión perdida.</li>
-                                <li>Esta cotización es válida por 5 días.</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact/CTA Section -->
-        <section id="contacto" class="py-20 text-center bg-brand-dark">
-             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold mb-4 text-brand-accent">¿Lista para brillar?</h2>
-                <p class="text-lg text-brand-offwhite mb-4 max-w-2xl mx-auto">Asegura tu lugar.</p>
-                <p class="text-brand-accent font-bold text-xl mb-8 tracking-wider">¡Solo 8 espacios disponibles por mes!</p>
-                
-                <div class="bg-white rounded-lg p-2 md:p-4 max-w-4xl mx-auto">
-                    <!-- Cal inline embed code begins -->
-                    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-sesion-de-fotos"></div>
-                    <script type="text/javascript">
-                      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-                      Cal("init", "sesion-de-fotos", {origin:"https://app.cal.com"});
-
-                      Cal.ns["sesion-de-fotos"]("inline", {
-                        elementOrSelector:"#my-cal-inline-sesion-de-fotos",
-                        config: {"layout":"month_view"},
-                        calLink: "sauldiazph/sesion-de-fotos",
-                      });
-
-                      Cal.ns["sesion-de-fotos"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-                      </script>
-                      <!-- Cal inline embed code ends -->
-                </div>
-             </div>
-        </section>
-
-        <!-- WhatsApp Section -->
-        <section id="whatsapp" class="py-20 text-center bg-brand-offwhite">
-            <div class="container mx-auto px-6">
-               <h2 class="text-3xl font-bold mb-2 text-brand-dark">¿Tienes dudas antes de agendar?</h2>
-               <p class="text-lg text-brand-dark/80 mb-8 max-w-2xl mx-auto">Escríbeme por WhatsApp, con gusto te ayudo a resolverlas.</p>
-               <a href="https://wa.me/5216641234567" target="_blank" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition-transform transform hover:scale-105 inline-flex items-center space-x-3">
-                    <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755994836/410199-PD37U2-851_povmt3.png" alt="Icono de WhatsApp" class="h-6 w-6">
-                    <span>Enviar WhatsApp</span>
+        <div class="container mx-auto px-6 relative z-10 text-center mt-10">
+            <!-- Ajuste: Tamaño reducido para móvil (text-3xl en lugar de 4xl) -->
+            <h1 class="text-3xl md:text-6xl lg:text-7xl leading-[1.1] mb-8 font-prime tracking-tighter uppercase reveal-on-scroll">
+                Cumplir años es común <br>
+                <span class="text-gradient-gold italic block mt-2">Entrar en tu Prime no</span>
+            </h1>
+            
+            <p class="text-[10px] md:text-xs font-medium text-white/70 max-w-2xl mx-auto mb-12 tracking-[0.25em] uppercase reveal-on-scroll delay-100 border-l border-prime-gold/30 pl-4 md:border-none md:pl-0">
+                Sesiones diseñadas para presentar la versión de ti que empieza ahora.
+            </p>
+            
+            <div class="reveal-on-scroll delay-200">
+                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="group relative inline-flex items-center justify-center px-10 py-5 overflow-hidden font-bold text-black transition-transform duration-300 ease-out border-2 border-prime-gold rounded-none shadow-md hover:scale-105">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-br from-prime-gold via-prime-gold-dark to-prime-gold group-hover:from-prime-gold-dark group-hover:to-prime-gold"></span>
+                    <span class="relative text-[10px] uppercase tracking-[0.25em] font-body">Reservar Prime Era Session</span>
                 </a>
             </div>
-       </section>
-    </main>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <svg class="w-4 h-4 text-prime-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.getElementById('gallery-carousel');
-            const nextBtn = document.getElementById('next-btn');
-            const prevBtn = document.getElementById('prev-btn');
+    <!-- MANIFIESTO / EDITORIAL -->
+    <section id="presentar-prime" class="py-24 md:py-40 bg-prime-dark relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            
+            <!-- Ajuste: Título Móvil (Visible solo en móvil, aparece PRIMERO) -->
+            <div class="lg:hidden space-y-6 mb-12 text-center reveal-on-scroll">
+                <h2 class="text-4xl font-prime leading-[0.9] uppercase tracking-tighter">
+                    Presentar <br>
+                    <span class="text-gradient-gold italic font-light text-5xl ml-2 block mt-2">TU PRIME</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gradient-to-r from-prime-gold to-transparent mx-auto"></div>
+            </div>
 
-            let currentIndex = 0;
-            let isTransitioning = false;
-            let originalItemCount;
-            let autoScrollInterval;
-
-            const setupCarousel = () => {
-                // Detener el desplazamiento automático y limpiar clones antiguos
-                if (autoScrollInterval) clearInterval(autoScrollInterval);
-                const clones = carousel.querySelectorAll('.clone');
-                clones.forEach(clone => clone.remove());
-
-                // CAMBIO: Recalcular el número de ítems originales después de limpiar los clones
-                originalItemCount = carousel.children.length;
-
-                // Determinar cuántos elementos son visibles
-                const visibleItems = window.innerWidth >= 768 ? 3 : 1;
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                 
-                // Clonar los elementos necesarios al final para un bucle infinito
-                if (originalItemCount > visibleItems) {
-                    for (let i = 0; i < visibleItems; i++) {
-                        const item = carousel.children[i].cloneNode(true);
-                        item.classList.add('clone');
-                        carousel.appendChild(item);
+                <!-- Imagen (Sin clases 'order' para que aparezca natural después del título móvil y antes del texto) -->
+                <div class="lg:col-span-6 relative reveal-on-scroll">
+                    <!-- Contenedor Slideshow -->
+                    <div id="slideshow-container" class="relative z-10 overflow-hidden group shadow-2xl h-[500px] md:h-[700px]">
+                        <!-- Overlay sutil (sin saturación) -->
+                        <div class="absolute inset-0 bg-prime-gold/10 z-30 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none mix-blend-overlay"></div>
+                        
+                        <!-- Imagen 1 (Fondo/Base - z-10) -->
+                        <img id="slide-1" 
+                             src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717927/sart-insta-3_yajwcz.jpg" 
+                             class="absolute inset-0 w-full h-full object-cover object-top crossfade-img z-10 group-hover:scale-105" 
+                             alt="Editorial Portrait">
+                             
+                        <!-- Imagen 2 (Frente - z-20) -->
+                        <img id="slide-2" 
+                             src="" 
+                             class="absolute inset-0 w-full h-full object-cover object-top crossfade-img z-20 group-hover:scale-105 opacity-0" 
+                             alt="Editorial Portrait">
+                    </div>
+                    <!-- Elementos decorativos -->
+                    <div class="absolute -bottom-4 -left-4 w-full h-full border border-prime-gold/30 -z-0 hidden md:block transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                    <div class="absolute -top-10 -right-10 text-6xl md:text-8xl text-prime-gold/5 font-prime italic z-0">01</div>
+                </div>
+
+                <!-- Texto -->
+                <div class="lg:col-span-6 space-y-10">
+                    <!-- Ajuste: Título de Escritorio (Oculto en móvil) -->
+                    <div class="space-y-6 reveal-on-scroll hidden lg:block">
+                        <h2 class="text-4xl md:text-6xl font-prime leading-[0.9] uppercase tracking-tighter">
+                            Presentar <br>
+                            <span class="text-gradient-gold italic font-light text-5xl md:text-7xl ml-2 block mt-2">TU PRIME</span>
+                        </h2>
+                        <div class="w-24 h-[1px] bg-gradient-to-r from-prime-gold to-transparent"></div>
+                    </div>
+
+                    <div class="space-y-12 reveal-on-scroll delay-100">
+                        <ul class="space-y-2 text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-semibold text-white/60">
+                            <li class="flex items-center gap-6 group cursor-default">
+                                <span class="w-1.5 h-1.5 rotate-45 bg-prime-gold transition-transform group-hover:rotate-90"></span>
+                                <span class="group-hover:text-prime-gold transition-colors">No solo celebras una edad</span>
+                            </li>
+                            <li class="flex items-center gap-6 group cursor-default">
+                                <span class="w-1.5 h-1.5 rotate-45 bg-prime-gold transition-transform group-hover:rotate-90"></span>
+                                <span class="group-hover:text-prime-gold transition-colors">No haces fotos para el recuerdo</span>
+                            </li>
+                            <li class="flex items-center gap-6 group cursor-default">
+                                <span class="w-1.5 h-1.5 rotate-45 bg-prime-gold transition-transform group-hover:rotate-90"></span>
+                                <span class="group-hover:text-prime-gold transition-colors">No posas para verte tierna</span>
+                            </li>
+                        </ul>
+
+                        <p class="text-xl md:text-2xl font-body font-light leading-relaxed text-white/90 italic border-l-2 border-prime-gold pl-8 py-2">
+                            "Prime Era Sessions son sesiones diseñadas para presentar tu nueva versión: más segura, más clara y más memorable."
+                        </p>
+                        
+                        <div class="pt-4">
+                            <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="inline-block bg-prime-gold text-black py-4 px-10 text-[10px] font-bold tracking-[0.25em] uppercase hover:bg-white transition-colors shadow-lg hover:shadow-prime-gold/50 font-body">
+                                Reservar Prime Era Session
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Watermark -->
+        <div class="absolute right-0 bottom-20 text-[12rem] md:text-[20rem] font-prime opacity-[0.02] select-none italic pointer-events-none leading-none">Era</div>
+    </section>
+
+    <!-- EL FILTRO (FOR YOU / NOT FOR YOU) -->
+    <section class="py-24 bg-[#080807] border-y border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 md:gap-32 mb-16">
+                
+                <!-- ES PARA TI -->
+                <div class="reveal-on-scroll pl-4 md:pl-0 border-l border-prime-gold/20 md:border-none">
+                    <h3 class="text-prime-gold text-[10px] font-bold mb-10 uppercase tracking-[0.4em] font-prime flex items-center gap-3">
+                        <span class="w-6 h-[1px] bg-prime-gold hidden md:block"></span> ES PARA TI SI:
+                    </h3>
+                    <ul class="space-y-8 font-body">
+                        <li class="flex items-start gap-4 group">
+                            <span class="text-prime-gold text-lg md:text-xl">✓</span>
+                            <span class="text-lg md:text-xl font-light text-white leading-relaxed">
+                                Sientes que estás entrando en una nueva etapa.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <span class="text-prime-gold text-lg md:text-xl">✓</span>
+                            <span class="text-lg md:text-xl font-light text-white leading-relaxed">
+                                Quieres verte segura, dominante, memorable.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <span class="text-prime-gold text-lg md:text-xl">✓</span>
+                            <span class="text-lg md:text-xl font-light text-white leading-relaxed">
+                                Buscas presencia, no ternura.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- NO ES PARA TI -->
+                <div class="reveal-on-scroll delay-100 pl-4 md:pl-0 border-l border-white/10 md:border-none">
+                    <h3 class="text-prime-gold text-[10px] font-bold mb-10 uppercase tracking-[0.4em] font-prime flex items-center gap-3">
+                        <span class="w-6 h-[1px] bg-prime-gold hidden md:block"></span> NO ES PARA TI SI:
+                    </h3>
+                    <ul class="space-y-8 font-body">
+                        <li class="flex items-start gap-4">
+                            <span class="text-prime-gold text-lg md:text-xl">✕</span>
+                            <span class="text-lg md:text-xl font-light text-white leading-relaxed">
+                                Solo quieres “unas fotitos bonitas”.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-prime-gold text-lg md:text-xl">✕</span>
+                            <span class="text-lg md:text-xl font-light text-white leading-relaxed">
+                                Buscas algo rápido y barato.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-prime-gold text-lg md:text-xl">✕</span>
+                            <span class="text-lg md:text-xl font-light text-white leading-relaxed">
+                                Prefieres algo casual sin intención.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center reveal-on-scroll">
+                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="inline-block bg-prime-gold text-black py-4 px-12 text-[10px] font-bold tracking-[0.25em] uppercase hover:bg-white transition-colors shadow-lg hover:shadow-prime-gold/50 font-body">
+                    Reservar Prime Era Session
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVERSIÓN (PAQUETES) -->
+    <section id="paquetes" class="py-24 md:py-32 bg-white text-prime-dark relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24 reveal-on-scroll">
+                <h2 class="text-5xl md:text-8xl uppercase leading-none tracking-tighter font-prime text-prime-dark">PAQUETES</h2>
+                
+                <div class="inline-block mt-8">
+                    <span class="bg-prime-gold text-black px-6 py-3 text-xs md:text-sm font-bold tracking-[0.3em] uppercase font-prime shadow-lg">
+                        Solo 10 espacios por mes
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-12 max-w-6xl mx-auto items-stretch">
+                
+                <!-- ESENCIAL -->
+                <!-- Ajuste: order-2 para móvil, md:order-1 para escritorio -->
+                <div class="reveal-on-scroll h-full order-2 md:order-1">
+                    <div class="h-full p-10 md:p-14 bg-prime-dark text-white border border-white/10 flex flex-col relative overflow-hidden shadow-xl">
+                        
+                        <div class="mb-12 text-left">
+                            <h3 class="text-3xl md:text-5xl font-prime uppercase italic leading-none mb-4 text-white">
+                                PRIME ERA <br> <span class="text-prime-gold">SESSION</span>
+                            </h3>
+                            <h4 class="text-sm md:text-base font-bold tracking-[0.4em] uppercase text-white/60 font-body">Esencial</h4>
+                        </div>
+                        
+                        <!-- Lista -->
+                        <ul class="space-y-6 mb-12 flex-grow text-[12px] md:text-[13px] tracking-widest uppercase font-medium text-white font-body">
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Duración</span> <span>30 min</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Sets</span> <span>1 Fondo Color</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Entrega</span> <span>8 Fotos Editadas</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Formato</span> <span>Galería Online</span></li>
+                        </ul>
+                        
+                        <div class="flex flex-col items-center gap-6 mt-auto w-full pt-4 border-t border-white/5">
+                            <!-- Precio en negritas -->
+                            <div class="text-3xl md:text-4xl font-body font-bold text-prime-gold mt-6 tracking-widest">$2,700 MXN</div>
+                            <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="w-full bg-prime-gold text-black py-5 text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase hover:bg-white transition-colors text-center shadow-lg hover:shadow-prime-gold/50 font-body">
+                                Reservar Prime Era Session
+                            </a>
+                            <p class="text-[9px] font-medium tracking-widest uppercase text-white/80 font-body">
+                                Agenda abierta - Enero/Febrero
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREMIUM -->
+                <!-- Ajuste: order-1 para móvil, md:order-2 para escritorio -->
+                <div class="reveal-on-scroll delay-100 h-full order-1 md:order-2">
+                    <div class="h-full p-10 md:p-14 flex flex-col bg-prime-dark text-white relative shadow-2xl border border-prime-gold/20">
+                        <div class="absolute top-0 right-0 bg-prime-gold text-black px-6 py-2 text-[9px] font-bold uppercase tracking-widest font-prime">Más Popular</div>
+                        
+                        <div class="mb-12 text-left">
+                            <h3 class="text-3xl md:text-5xl font-prime uppercase italic leading-none mb-4 text-white">
+                                PRIME ERA <br> <span class="text-prime-gold">SESSION</span>
+                            </h3>
+                            <h4 class="text-sm md:text-base font-bold tracking-[0.4em] uppercase text-white/60 font-body">Premium</h4>
+                        </div>
+                        
+                        <!-- Lista -->
+                        <ul class="space-y-6 mb-12 flex-grow text-[12px] md:text-[13px] tracking-widest uppercase font-medium text-white font-body">
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Duración</span> <span>1 Hora</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Sets</span> <span>1 Fondo Color</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Styling</span> <span>1 Cambio Outfit</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Entrega</span> <span>16 Fotos Editadas</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-3"><span>Formato</span> <span>Galería Online</span></li>
+                        </ul>
+                        
+                        <div class="flex flex-col items-center gap-6 mt-auto w-full pt-4 border-t border-white/5">
+                            <!-- Precio en negritas -->
+                            <div class="text-3xl md:text-4xl font-body font-bold text-prime-gold mt-6 tracking-widest">$3,000 MXN</div>
+                            <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="w-full bg-prime-gold text-black py-5 text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase hover:bg-white transition-colors text-center shadow-lg hover:shadow-prime-gold/50 font-body">
+                                Reservar Prime Era Session
+                            </a>
+                            <p class="text-[9px] font-medium tracking-widest uppercase text-white/80 font-body">
+                                Agenda abierta - Enero/Febrero
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- EXTRAS MENU -->
+            <div class="mt-24 reveal-on-scroll max-w-3xl mx-auto">
+                <h5 class="text-[10px] font-bold tracking-[0.5em] uppercase mb-16 opacity-40 text-center font-prime text-prime-dark">Extras Disponibles</h5>
+                
+                <div class="space-y-12">
+                    <!-- Ramo de Rosas -->
+                    <div class="text-center">
+                        <h3 class="text-xl md:text-2xl font-prime italic text-prime-dark mb-4 uppercase">Ramo de rosas</h3>
+                        <div class="space-y-2 font-body text-sm text-prime-dark/70 uppercase tracking-wider">
+                            <p>24 Rosas - <span class="font-bold text-black">$600 MXN</span></p>
+                            <p>50 Rosas - <span class="font-bold text-black">$1,200 MXN</span></p>
+                            <p>100 Rosas - <span class="font-bold text-black">$1,850 MXN</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Pastel -->
+                    <div class="text-center">
+                        <h3 class="text-xl md:text-2xl font-prime italic text-prime-dark mb-4 uppercase">Pastel</h3>
+                        <div class="space-y-2 font-body text-sm text-prime-dark/70 uppercase tracking-wider">
+                            <p>Mediano Bajo - <span class="font-bold text-black">$480 MXN</span></p>
+                            <p>Mediano Alto - <span class="font-bold text-black">$590 MXN</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Maquillaje y peinado -->
+                    <div class="text-center">
+                        <h3 class="text-xl md:text-2xl font-prime italic text-prime-dark mb-4 uppercase">Maquillaje y peinado</h3>
+                        <div class="font-body text-sm text-prime-dark/70 uppercase tracking-wider">
+                            <p><span class="font-bold text-black">$2,000 MXN</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-prime-dark relative">
+        <div class="container mx-auto px-6 max-w-4xl relative z-10">
+            <h2 class="text-3xl md:text-4xl font-prime mb-16 italic reveal-on-scroll text-white">
+                Preguntas Frecuentes
+            </h2>
+            
+            <div class="reveal-on-scroll">
+                <!-- PREGUNTA 1 -->
+                <div class="grid md:grid-cols-12 gap-4 py-8">
+                    <div class="md:col-span-4">
+                        <h3 class="text-sm md:text-base font-bold uppercase tracking-widest text-prime-gold">
+                            ¿Es solo para cumpleaños?
+                        </h3>
+                    </div>
+                    <div class="md:col-span-8">
+                        <p class="text-white leading-relaxed font-light text-sm md:text-base font-body">
+                            Idealmente, pero no necesario. Prime Era es un estado mental. Es para cualquier mujer que sienta que está iniciando una etapa de mayor claridad y poder personal.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 2 -->
+                <div class="grid md:grid-cols-12 gap-4 py-8 border-t border-white/10">
+                    <div class="md:col-span-4">
+                        <h3 class="text-sm md:text-base font-bold uppercase tracking-widest text-prime-gold">
+                            ¿Cómo reservo mi lugar?
+                        </h3>
+                    </div>
+                    <div class="md:col-span-8">
+                        <p class="text-white leading-relaxed font-light text-sm md:text-base font-body">
+                            El proceso es sencillo: eliges tu paquete, realizas un anticipo para asegurar tu fecha en el calendario, creamos el moodboard y coordinamos los detalles para tu sesión.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 3 -->
+                <div class="grid md:grid-cols-12 gap-4 py-8 border-t border-white/10">
+                    <div class="md:col-span-4">
+                        <h3 class="text-sm md:text-base font-bold uppercase tracking-widest text-prime-gold">
+                            ¿Necesito saber posar?
+                        </h3>
+                    </div>
+                    <div class="md:col-span-8">
+                        <p class="text-white leading-relaxed font-light text-sm md:text-base font-body">
+                            Para nada. Parte de mi trabajo es guiarte paso a paso para lograr que presentes la versión de ti que empieza ahora.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 4 -->
+                <div class="grid md:grid-cols-12 gap-4 py-8 border-t border-white/10">
+                    <div class="md:col-span-4">
+                        <h3 class="text-sm md:text-base font-bold uppercase tracking-widest text-prime-gold">
+                            ¿Dónde está ubicado el estudio?
+                        </h3>
+                    </div>
+                    <div class="md:col-span-8">
+                        <p class="text-white leading-relaxed font-light text-sm md:text-base font-body">
+                            Estamos ubicados en Tijuana, el estudio se encuentra en el área de Fundadores. Por mensaje te comparto la ubicación exacta.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 5 -->
+                <div class="grid md:grid-cols-12 gap-4 py-8 border-t border-white/10">
+                    <div class="md:col-span-4">
+                        <h3 class="text-sm md:text-base font-bold uppercase tracking-widest text-prime-gold">
+                            ¿En cuánto tiempo se entregan las fotos?
+                        </h3>
+                    </div>
+                    <div class="md:col-span-8">
+                        <p class="text-white leading-relaxed font-light text-sm md:text-base font-body">
+                            Recibirás tus fotos en un plazo de 3-5 días.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 reveal-on-scroll">
+                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="inline-block bg-prime-gold text-black py-4 px-12 text-[10px] font-bold tracking-[0.25em] uppercase hover:bg-white transition-colors shadow-lg hover:shadow-prime-gold/50 font-body">
+                    Reservar Prime Era Session
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="contacto" class="py-32 md:py-40 bg-prime-gold text-black text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="reveal-on-scroll">
+                <h2 class="text-4xl md:text-7xl font-prime mb-12 leading-[1.1] tracking-tighter">
+                    Bonita ya eres, icónica es la versión <br> <span class="italic font-normal font-serif">que vas a presentar ahora</span>
+                </h2>
+                
+                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul!%0AQuiero%20reservar%20mi%20Prime%20Era%20Session%F0%9F%93%B8" target="_blank" class="group bg-prime-dark text-white font-bold py-6 px-12 md:px-20 rounded-none text-[9px] md:text-[10px] hover:shadow-2xl transition-all duration-300 inline-flex items-center gap-4 tracking-[0.4em] uppercase hover:-translate-y-1">
+                    <span>Reservar Prime Era Session</span>
+                </a>
+            </div>
+            <p class="mt-40 text-[9px] font-bold tracking-[1.2em] opacity-40 uppercase font-prime text-black mix-blend-multiply">
+                sauldiaz.art © 2026
+            </p>
+        </div>
+    </section>
+
+    <!-- Scripts de Interacción -->
+    <script>
+        // Intersection Observer para animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Solo animar una vez
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar blur on scroll
+        window.addEventListener('scroll', () => {
+            const navBg = document.getElementById('navbar-bg');
+            if (window.scrollY > 50) {
+                navBg.classList.remove('opacity-0');
+            } else {
+                navBg.classList.add('opacity-0');
+            }
+        });
+
+        // Slideshow Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717927/sart-insta-3_yajwcz.jpg";
+            const images = [
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756166606/sart-11_jittpk.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172693/fotos-ana-3_b6ewnc.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-11_trfyua.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172694/fotos-ana-14_fmlfzw.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172763/fotos-karla-15_yobqzz.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172764/fotos-karla-4_kkkdop.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1756172764/fotos-karla-7_clcqc8.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-18_y8fkso.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-24_tbf42l.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717803/sart-22_c3encl.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717854/sart-insta-3_ylmudm.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717882/sart-11_idfxqq.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717883/sart-4_qvh23x.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717927/sart-insta-1_loruf6.jpg",
+                "https://res.cloudinary.com/drrhn6t1c/image/upload/v1757717928/sart-insta-16_ooxshe.jpg"
+            ];
+
+            // Filtrar mainImage de la lista para no repetirla inmediatamente si está ahí
+            const otherImages = images.filter(img => img !== mainImage);
+
+            // Fisher-Yates Shuffle
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            const shuffledImages = shuffle([...otherImages]);
+            const finalPlaylist = [mainImage, ...shuffledImages];
+            
+            let currentIndex = 0;
+            const slide1 = document.getElementById('slide-1');
+            const slide2 = document.getElementById('slide-2');
+            let activeSlide = 1;
+
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % finalPlaylist.length;
+                const nextImageSrc = finalPlaylist[nextIndex];
+                
+                if (activeSlide === 1) {
+                    slide2.src = nextImageSrc;
+                    slide2.onload = () => {
+                        slide2.classList.remove('opacity-0'); // Show Top
+                        setTimeout(() => {
+                            slide1.classList.add('opacity-0'); // Hide Bottom
+                            activeSlide = 2;
+                        }, 3000); // 3s Wait
+                    };
+                    if(slide2.complete) {
+                         slide2.classList.remove('opacity-0');
+                         setTimeout(() => {
+                            slide1.classList.add('opacity-0');
+                            activeSlide = 2;
+                        }, 3000);
+                    }
+                } else {
+                    slide1.src = nextImageSrc;
+                    slide1.onload = () => {
+                        slide1.classList.remove('opacity-0'); // Show Bottom (Now on Top via Z-Index check? No, just fade in over top)
+                        // Actually, Slide 1 is z-10, Slide 2 is z-20. 
+                        // To show Slide 1, we must Fade OUT Slide 2.
+                        
+                        // Revised Logic for correct layering with z-index fixed:
+                        // Slide 2 (Top) is visible. Slide 1 (Bottom) is hidden.
+                        // 1. Set Slide 1 src (hidden)
+                        // 2. Fade Slide 1 In (Still hidden behind Slide 2)
+                        // 3. Fade Slide 2 Out (Reveals Slide 1)
+                        
+                        slide1.classList.remove('opacity-0'); 
+                        slide2.classList.add('opacity-0');
+                        activeSlide = 1;
+                    };
+                    if(slide1.complete) {
+                         slide1.classList.remove('opacity-0');
+                         slide2.classList.add('opacity-0');
+                         activeSlide = 1;
                     }
                 }
                 
-                // Mover al inicio sin animación
-                currentIndex = 0;
-                carousel.style.transition = 'none';
-                updateCarouselPosition();
-                
-                // Reiniciar el desplazamiento automático
-                startAutoScroll();
-            };
-
-            const updateCarouselPosition = () => {
-                const itemWidth = carousel.children[0].offsetWidth;
-                const offset = -currentIndex * itemWidth;
-                carousel.style.transform = `translateX(${offset}px)`;
-            };
-
-            const moveCarousel = (direction) => {
-                if (isTransitioning) return;
-                // CORRECCIÓN: Se eliminó el guion adicional en 'isTransitioning'
-                isTransitioning = true;
-                
-                currentIndex += direction;
-                carousel.style.transition = 'transform 0.5s ease-in-out';
-                updateCarouselPosition();
-
-                carousel.addEventListener('transitionend', () => {
-                    isTransitioning = false;
-                    
-                    if (currentIndex >= originalItemCount) {
-                        carousel.style.transition = 'none';
-                        currentIndex = 0;
-                        updateCarouselPosition();
-                    }
-                   
-                    if (currentIndex < 0) {
-                        carousel.style.transition = 'none';
-                        currentIndex = originalItemCount - 1;
-                        updateCarouselPosition();
-                    }
-                }, { once: true });
-            };
-
-            const startAutoScroll = () => {
-                autoScrollInterval = setInterval(() => {
-                    moveCarousel(1);
-                }, 4000);
-            };
-
-            // Event listeners para los botones
-            nextBtn.addEventListener('click', () => {
-                clearInterval(autoScrollInterval);
-                moveCarousel(1);
-                startAutoScroll();
-            });
-
-
-
-            prevBtn.addEventListener('click', () => {
-                clearInterval(autoScrollInterval);
-                moveCarousel(-1);
-                startAutoScroll();
-            });
-
-            // Configuración inicial
-            setupCarousel();
-            
-            // Reconfigurar el carrusel si cambia el tamaño de la ventana
-            window.addEventListener('resize', setupCarousel);
+                currentIndex = nextIndex;
+            }, 4000); // 4 seconds interval
         });
     </script>
 
 </body>
 </html>
+
 
